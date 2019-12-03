@@ -66,7 +66,7 @@ func TestCollectLetters(t *testing.T) {
 		{"AA", 26},
 	}
 	for _, c := range cases {
-		s, err := ColAlphaToIndex(c.alpha)
+		s, err := colAlphaToIndex(c.alpha)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -88,7 +88,7 @@ func TestGetColApha(t *testing.T) {
 		{16377, "XEX"},
 	}
 	for _, c := range cases {
-		s, err := ColIndexToAlpha(c.index)
+		s, err := colIndexToAlpha(c.index)
 		if err != nil {
 			t.Fatal(err)
 		}

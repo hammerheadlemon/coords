@@ -15,7 +15,7 @@ const (
 
 // ColAlpha returns an alpha representation of a column index.
 // index is an integer - ColAlpha(0) returns "A", etc.
-func ColIndexToAlpha(index int) (string, error) {
+func colIndexToAlpha(index int) (string, error) {
 	max := len(Colstream) - 1
 	if index <= max {
 		return Colstream[index], nil
@@ -29,7 +29,7 @@ var Colstream = cols(maxAlphabets)
 
 // ColLettersToIndex converts an alpha column
 // reference to a zero-based numeric column identifier.
-func ColAlphaToIndex(letters string) (int, error) {
+func colAlphaToIndex(letters string) (int, error) {
 	max := len(Colstream) - 1
 	for i, v := range Colstream {
 		if i > max {
