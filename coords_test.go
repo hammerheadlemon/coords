@@ -5,12 +5,12 @@ import (
 )
 
 func TestAlphaStream(t *testing.T) {
-	if colstream[26] != "AA" {
-		t.Errorf("The test expected AA, got %v.", colstream[26])
+	if Colstream[26] != "AA" {
+		t.Errorf("The test expected AA, got %v.", Colstream[26])
 	}
-	if len(colstream) > maxCols {
+	if len(Colstream) > maxCols {
 		t.Errorf(`Number of columns in alphastream exceeds Excel maximum.
-		alphastream contains %d, maxCols is %d`, len(colstream), maxCols)
+		alphastream contains %d, maxCols is %d`, len(Colstream), maxCols)
 	}
 }
 
