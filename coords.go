@@ -15,23 +15,23 @@ const (
 
 // ColAlpha returns an alpha representation of a column index.
 // index is an integer - ColAlpha(0) returns "A", etc.
-func colIndexToAlpha(index int) (string, error) {
-	max := len(Colstream) - 1
+func ColIndexToAlpha(index int) (string, error) {
+	max := len(colstream) - 1
 	if index <= max {
-		return Colstream[index], nil
+		return colstream[index], nil
 	} else {
 		msg := fmt.Sprintf("cannot have more than %d columns", max)
 		return "", errors.New(msg)
 	}
 }
 
-var Colstream = cols(maxAlphabets)
+var colstream = cols(maxAlphabets)
 
 // ColLettersToIndex converts an alpha column
 // reference to a zero-based numeric column identifier.
-func colAlphaToIndex(letters string) (int, error) {
-	max := len(Colstream) - 1
-	for i, v := range Colstream {
+func ColAlphaToIndex(letters string) (int, error) {
+	max := len(colstream) - 1
+	for i, v := range colstream {
 		if i > max {
 			msg := fmt.Sprintf("Cannot exceed maximum of %d", max)
 			return 0, errors.New(msg)

@@ -5,12 +5,12 @@ import (
 )
 
 func TestAlphaStream(t *testing.T) {
-	if Colstream[26] != "AA" {
-		t.Errorf("The test expected AA, got %v.", Colstream[26])
+	if colstream[26] != "AA" {
+		t.Errorf("The test expected AA, got %v.", colstream[26])
 	}
-	if len(Colstream) > maxCols {
+	if len(colstream) > maxCols {
 		t.Errorf(`Number of columns in alphastream exceeds Excel maximum.
-		alphastream contains %d, maxCols is %d`, len(Colstream), maxCols)
+		alphastream contains %d, maxCols is %d`, len(colstream), maxCols)
 	}
 }
 
@@ -66,7 +66,7 @@ func TestCollectLetters(t *testing.T) {
 		{"AA", 26},
 	}
 	for _, c := range cases {
-		s, err := colAlphaToIndex(c.alpha)
+		s, err := ColAlphaToIndex(c.alpha)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -88,7 +88,7 @@ func TestGetColApha(t *testing.T) {
 		{16377, "XEX"},
 	}
 	for _, c := range cases {
-		s, err := colIndexToAlpha(c.index)
+		s, err := ColIndexToAlpha(c.index)
 		if err != nil {
 			t.Fatal(err)
 		}
