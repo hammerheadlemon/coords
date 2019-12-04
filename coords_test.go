@@ -52,31 +52,6 @@ func TestAlphas(t *testing.T) {
 	}
 }
 
-func TestCollectLetters(t *testing.T) {
-	cases := []struct {
-		alpha string
-		index int
-	}{
-		{"XEZ", 16379},
-		{"XEY", 16378},
-		{"XEX", 16377},
-		{"A", 0},
-		{"B", 1},
-		{"C", 2},
-		{"AA", 26},
-	}
-	for _, c := range cases {
-		s, err := ColAlphaToIndex(c.alpha)
-		if err != nil {
-			t.Fatal(err)
-		}
-		if s != c.index {
-			t.Errorf("Expected %d to return %s, instead it returned %d", c.index, c.alpha, s)
-		}
-
-	}
-}
-
 func TestGetColApha(t *testing.T) {
 	cases := []struct {
 		index int
@@ -95,5 +70,36 @@ func TestGetColApha(t *testing.T) {
 		if s != c.alpha {
 			t.Errorf("Expected %s, got %s\n", c.alpha, s)
 		}
+	}
+}
+
+func TestColAlphaToIndex(t *testing.T) {
+	type args struct {
+		letters string
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    int
+		wantErr bool
+	}{
+		{"TestColAlphaToIndex", args{"XEZ"}, 16379, false},
+		{"TestColAlphaToIndex", args{"XEY"}, 16378, false},
+		{"TestColAlphaToIndex", args{"XEX"}, 16377, false},
+		{"TestColAlphaToIndex", args{"A"}, 0, false},
+		{"TestColAlphaToIndex", args{"B"}, 1, false},
+		{"TestColAlphaToIndex", args{"AA"}, 26, false},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := ColAlphaToIndex(tt.args.letters)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("ColAlphaToIndex() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("ColAlphaToIndex() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
