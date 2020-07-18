@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// Test AlphaStream
 func TestAlphaStream(t *testing.T) {
 	if colstream[26] != "AA" {
 		t.Errorf("The test expected AA, got %v.", colstream[26])
